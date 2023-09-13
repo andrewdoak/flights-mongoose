@@ -3,21 +3,30 @@ import React, { Component } from "react";
 export default class Index extends Component {
   render() {
     const { flights } = this.props;
+    // Hide bullets, sans serif
+    const avenir = {
+      fontFamily: "Avenir",
+      listStyleType: "none",
+    };
     return (
       <div>
-        <h1>All Flights</h1>
+        <h1 style={avenir}>All Flights</h1>
         {/* CREATE FLIGHT */}
         <nav>
-          <a href="/flights/new">Create a Flight</a>
+          <a style={avenir} href="/flights/new">
+            Create a Flight
+          </a>
         </nav>
-        <ul>
+        <ul style={avenir}>
           {/* MAP GRABS DATA FROM THE FLIGHT */}
           {flights.map((flight, i) => {
             return (
               // Does this need to display the date?
               <li key={i}>
-                {`${flight.airline} Flight ${flight.flightNo} 
-                departs on ${flight.departs.toLocaleString()}`}
+                <b>{`${flight.airline} Flight ${flight.flightNo}`}</b>
+                <br />
+                {`Departure: `}
+                {`${flight.departs.toLocaleString()}`}
               </li>
             );
           })}
