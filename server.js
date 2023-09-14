@@ -13,6 +13,8 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 // Flights Model
 const Flight = require("./models/Flight");
+// Destinations Model
+const Destination = require("./models/Destination");
 
 // MONGODB //
 /////////////
@@ -91,6 +93,16 @@ app.post("/flights", async (req, res) => {
 // 6. E - Edit
 
 // 7. S - Show
+app.get("/flights/:id", async (req, res) => {
+  try {
+    const foundFlight = await Flight.findById(req.params.id);
+    res.render("Show", {
+      flight: foundFlight,
+    });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
 // 8. E - REDIRECT/CATCH ALL ROUTE
 app.get("*", (req, res) => {

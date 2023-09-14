@@ -21,12 +21,19 @@ export default class Index extends Component {
           {/* MAP GRABS DATA FROM THE FLIGHT */}
           {flights.map((flight, i) => {
             return (
-              // Does this need to display the date?
               <li key={i}>
-                <b>{`${flight.airline} Flight ${flight.flightNo}`}</b>
+                {/* AIRLINE AND FLIGHT */}
+                <b>{`${flight.airline} Flight ${flight.flightNo} `}</b>
+                {/* SHOW LINK */}
+                <a style={avenir} href={`/flights/${flight._id}`}>
+                  Info
+                </a>
+                {/* AIRPORT */}
                 <br />
-                {`Departure: `}
-                {`${flight.departs.toLocaleString()}`}
+                {`Departure Airport: ${flight.airport} `}
+                <br />
+                {/* DEPARTURE TIME */}
+                {`Time: ${flight.departs.toLocaleString()}`}
               </li>
             );
           })}
