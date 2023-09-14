@@ -22,7 +22,7 @@ const destinationSchema = new Schema(
   { timestamps: true }
 );
 // Schema Parameters:
-// Airport takes an enum validator for the array of airlines
+// Airport takes enum validator for the array of airlines
 // ENUM validates / checks if value given is an item in the array
 
 const Destination = model("Destination", destinationSchema);

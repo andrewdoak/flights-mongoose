@@ -10,18 +10,18 @@ export default class Show extends Component {
     };
     return (
       <div>
-        <h1 style={avenir}>Flight Detail</h1>
+        <h1 style={avenir}>Flight Information</h1>
+        <h2
+          style={avenir}
+        >{`${flight.airline} Airlines #${flight.flightNo}`}</h2>
+        <p style={avenir}>{`Departs: ${flight.departs.toLocaleString()}`}</p>
+        <p style={avenir}>{`Airport Code: ${flight.airport}`}</p>
+        {/* Time: ${flight.departs.toLocaleString() */}
         <nav>
           <a style={avenir} href="/flights">
-            All Flights
+            Flights
           </a>
         </nav>
-        <h2 style={avenir}>{`Airline ${flight.airline}`}</h2>
-        <h4 style={avenir}>{`Flight No. ${flight.flightNo}`}</h4>
-        <h4 style={avenir}>{`Airport ${flight.airport}`}</h4>
-        <h4
-          style={avenir}
-        >{`Departure: ${flight.departs.toLocaleString()}`}</h4>
       </div>
     );
   }

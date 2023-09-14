@@ -10,20 +10,14 @@ export default class Index extends Component {
     };
     return (
       <div>
-        <h1 style={avenir}>All Flights</h1>
-        {/* CREATE FLIGHT */}
-        <nav>
-          <a style={avenir} href="/flights/new">
-            Create a Flight
-          </a>
-        </nav>
+        <h1 style={avenir}>Departures</h1>
         <ul style={avenir}>
           {/* MAP GRABS DATA FROM THE FLIGHT */}
           {flights.map((flight, i) => {
             return (
               <li key={i}>
                 {/* AIRLINE AND FLIGHT */}
-                <b>{`${flight.airline} Flight ${flight.flightNo} `}</b>
+                <b>{`${flight.airline} Flight #${flight.flightNo} `}</b>
                 {/* SHOW LINK */}
                 <a style={avenir} href={`/flights/${flight._id}`}>
                   Info
@@ -38,6 +32,12 @@ export default class Index extends Component {
             );
           })}
         </ul>
+        {/* CREATE FLIGHT */}
+        <nav>
+          <a style={avenir} href="/flights/new">
+            Add a Flight
+          </a>
+        </nav>
       </div>
     );
   }
