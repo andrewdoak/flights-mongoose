@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 3000;
 const Flight = require("./models/Flight");
 // Destinations Model
 const Destination = require("./models/Destination");
+// Method Override
+const methodOverride = require("method-override");
 
 // MONGODB //
 /////////////
@@ -61,6 +63,8 @@ app.engine("jsx", jsxViewEngine());
 
 // VIEW BODY OF A POST REQUEST
 app.use(express.urlencoded({ extended: false }));
+// OVERRIDES POST METHOD
+app.use(methodOverride("_method"));
 
 // 1. I - Index
 app.get("/flights", async (req, res) => {
@@ -79,6 +83,19 @@ app.get("/flights/new", (req, res) => {
 // 3. D - Delete
 
 // 4. U - Update
+// Need Update routes for arrival and adding to array
+app.put("/flights/:id", async (req, res) => {
+  try {
+    const updatedFlight = await Flight.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(201).send(updatedFlight);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
 // 5. C - Create
 app.post("/flights", async (req, res) => {
@@ -91,6 +108,17 @@ app.post("/flights", async (req, res) => {
 });
 
 // 6. E - Edit
+app.get("/flights/:id/edit", async (req, res) => {
+  try {
+    // Find DOC in DB & UPDATE
+    const foundFlight = await Flight.findById(req.params.id);
+    res.render("Edit", {
+      flight: foundFlight,
+    });
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 
 // 7. S - Show
 app.get("/flights/:id", async (req, res) => {

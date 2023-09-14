@@ -15,7 +15,7 @@ const destinationSchema = new Schema(
     airport: {
       type: String,
       required: true,
-      enum: ["AUS", "DAL", "LAX", "SAN", "SEA"],
+      enum: ["AUS", "ORD", "DAL", "LAX", "SAN", "SEA"],
     },
     arrival: { type: Date, default: Date.now() },
   },

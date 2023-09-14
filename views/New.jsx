@@ -50,10 +50,11 @@ class New extends React.Component {
           <br />
           Airport{" "}
           <select name="airport">
+            <option value="SAN">SAN</option>
+            <option value="ORD">ORD</option>
             <option value="AUS">AUS</option>
             <option value="DAL">DAL </option>
             <option value="LAX">LAX </option>
-            <option value="SAN">SAN</option>
             <option value="SEA">SEA</option>
           </select>
           <br />

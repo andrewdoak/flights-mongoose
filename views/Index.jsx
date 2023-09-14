@@ -22,6 +22,9 @@ export default class Index extends Component {
                 <a style={avenir} href={`/flights/${flight._id}`}>
                   Info
                 </a>
+                {` `}
+                {/* EDIT LINK */}
+                <a href={`/flights/${flight._id}/edit`}>Edit</a>
                 {/* AIRPORT */}
                 <br />
                 {`Departure Airport: ${flight.airport} `}
@@ -42,4 +45,9 @@ export default class Index extends Component {
     );
   }
 }
-// .toLocaleString()
+
+/* 
+// EDIT PAGE
+<a href={/flight/${`flight._id}/edit`}>Edit</a>
+<a href="/flight">Back to Main</a>
+*/
