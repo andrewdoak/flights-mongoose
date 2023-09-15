@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 // Flights Model
 const Flight = require("./models/Flight");
 // Destinations Model
-const Destination = require("./models/Destination");
+// const Destination = require("./models/Destination");
 // Method Override
 const methodOverride = require("method-override");
 
@@ -110,7 +110,8 @@ app.post("/flights", async (req, res) => {
   }
 });
 
-// 6. E - Edit
+/* 
+// 6. E - Edit (NOT USING THIS ROUTE OR PAGE)
 app.get("/flights/:id/edit", async (req, res) => {
   try {
     // Find DOC in DB & UPDATE
@@ -121,7 +122,8 @@ app.get("/flights/:id/edit", async (req, res) => {
   } catch (err) {
     res.status(400).send(err);
   }
-});
+}); 
+*/
 
 // 7. S - Show
 app.get("/flights/:id", async (req, res) => {

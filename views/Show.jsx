@@ -31,7 +31,7 @@ class Show extends React.Component {
           style={avenir}
         >{`${flight.airline} Airlines #${flight.flightNo}`}</h2>
 
-        {/* DEPARTURE PLACE */}
+        {/* DEPARTURE AIRPORT */}
         <p style={avenir}>
           <b>{`Origin: `}</b>
           {`${flight.airport}`}
@@ -43,21 +43,23 @@ class Show extends React.Component {
         </p>
 
         {/* ARRIVAL */}
-        <ul style={avenir}>
-          {flight.destinations.map((flight, i) => {
-            return (
-              <li key={i} style={avenir}>
-                {/* DESTINATION PLACE*/}
-                <b>Destination:</b>
-                {` ${flight.airport}`}
-                <br />
-                {/* DESTINATION TIME*/}
-                <b>Arrival:</b>
-                {` ${flight.arrival.toLocaleString()}`}
-              </li>
-            );
-          })}
-        </ul>
+        {/* MAP OVER LI ELEMENTS NOT IN AN UL */}
+        {flight.destinations.map((flight, i) => {
+          return (
+            <li key={i} style={avenir}>
+              {/* DESTINATION AIRPORT*/}
+              <p>
+                <b>{`Destination: `}</b>
+                {`${flight.airport}`}
+              </p>
+              {/* DESTINATION TIME*/}
+              <p>
+                <b>{`Arrival: `}</b>
+                {`${flight.arrival.toLocaleString()}`}
+              </p>
+            </li>
+          );
+        })}
         {/* FORM ACTION */}
         <form action={`/flights/${flight._id}?_method=PUT`} method="POST">
           {/* EDIT FORM */}
@@ -93,6 +95,8 @@ class Show extends React.Component {
 }
 module.exports = Show;
 /*  
+CAN ONLY MAP OVER AN ARRAY
+
 // DEPARTURE DETAILS
 <h2
   style={avenir}
