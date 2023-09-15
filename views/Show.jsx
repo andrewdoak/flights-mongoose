@@ -23,20 +23,41 @@ class Show extends React.Component {
             Flights
           </a>
         </nav>
+
         <h1 style={avenir}>Flight Information</h1>
-        {/* FLIGHT NO. DISPLAY */}
+
+        {/* AIRLINE AND FLIGHT */}
         <h2
           style={avenir}
         >{`${flight.airline} Airlines #${flight.flightNo}`}</h2>
-        {/* DEPARTURE */}
-        <p style={avenir}>{`Departs: ${flight.departs.toLocaleString()}`}</p>
-        {/* AIRPORT */}
-        <p style={avenir}>{`Airport Code: ${flight.airport}`}</p>
-        {/* DESTINATION */}
-        Arrival:
-        {flight.destinations.map((flight, i) => {
-          return <li key={i}>{`${flight.arrival}} {${flight.airport}`}</li>;
-        })}
+
+        {/* DEPARTURE PLACE */}
+        <p style={avenir}>
+          <b>{`Origin: `}</b>
+          {`${flight.airport}`}
+        </p>
+        {/* FLIGHT DEPARTURE TIME */}
+        <p style={avenir}>
+          <b>{`Departure: `}</b>
+          {`${flight.departs.toLocaleString()}`}
+        </p>
+
+        {/* ARRIVAL */}
+        <ul style={avenir}>
+          {flight.destinations.map((flight, i) => {
+            return (
+              <li key={i} style={avenir}>
+                {/* DESTINATION PLACE*/}
+                <b>Destination:</b>
+                {` ${flight.airport}`}
+                <br />
+                {/* DESTINATION TIME*/}
+                <b>Arrival:</b>
+                {` ${flight.arrival.toLocaleString()}`}
+              </li>
+            );
+          })}
+        </ul>
         {/* FORM ACTION */}
         <form action={`/flights/${flight._id}?_method=PUT`} method="POST">
           {/* EDIT FORM */}
@@ -72,6 +93,15 @@ class Show extends React.Component {
 }
 module.exports = Show;
 /*  
+// DEPARTURE DETAILS
+<h2
+  style={avenir}
+>{`${flight.airline} Airlines #${flight.flightNo}`}</h2>
+// ORIGIN
+<p style={avenir}>{`Origin: ${flight.airport}`}</p>
+// DEPARTURE TIME
+<p style={avenir}>{`Departure: ${flight.departs.toLocaleString()}`}</p>
+
 // DATE SEPARATION (CHRISTINA)
 var d = new Date(),
     minutes = d.getMinutes().toString().length == 1 ? '0'+d.getMinutes() : d.getMinutes(),

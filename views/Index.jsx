@@ -10,7 +10,9 @@ export default class Index extends Component {
     };
     return (
       <div>
+        {/* PAGE TITLE */}
         <h1 style={avenir}>Departures</h1>
+        {/* FLIGHT */}
         <ul style={avenir}>
           {/* MAP GRABS DATA FROM THE FLIGHT */}
           {flights.map((flight, i) => {
@@ -27,10 +29,10 @@ export default class Index extends Component {
                 {/* <a href={`/flights/${flight._id}/edit`}>Edit</a> */}
                 {/* AIRPORT */}
                 <br />
-                {`Departure Airport: ${flight.airport} `}
+                {`Origin: ${flight.airport} `}
                 <br />
                 {/* DEPARTURE TIME */}
-                {`Time: ${flight.departs.toLocaleString()}`}
+                {`Departure: ${flight.departs.toLocaleString()}`}
               </li>
             );
           })}
