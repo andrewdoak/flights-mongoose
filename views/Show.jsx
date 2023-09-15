@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+const React = require("react");
 
-export default class Show extends Component {
+class Show extends React.Component {
   render() {
     const { flight } = this.props;
 
@@ -32,10 +32,13 @@ export default class Show extends Component {
         <p style={avenir}>{`Departs: ${flight.departs.toLocaleString()}`}</p>
         {/* AIRPORT */}
         <p style={avenir}>{`Airport Code: ${flight.airport}`}</p>
-        <form
-          action={`/flight/${this.props.flight._id}?_method=PUT`}
-          method="POST"
-        >
+        {/* DESTINATION */}
+        Arrival:
+        {flight.destinations.map((flight, i) => {
+          return <li key={i}>{`${flight.arrival}} {${flight.airport}`}</li>;
+        })}
+        {/* FORM ACTION */}
+        <form action={`/flights/${flight._id}?_method=PUT`} method="POST">
           {/* EDIT FORM */}
           {/* EDIT ARRIVAL TIME */}
           Arrival Time:{" "}
@@ -43,7 +46,7 @@ export default class Show extends Component {
             // Locale vs. local
             type="datetime-local"
             name="arrival"
-            defaultValue={defaultValue}
+            // defaultValue={defaultValue}
             style={{
               fontFamily: "Avenir",
             }}
@@ -51,7 +54,7 @@ export default class Show extends Component {
           <br />
           {/* EDIT ARRIVAL AIRPORT */}
           Arrival Airport{" "}
-          <select name="airport" defaultValue={this.props.flight.airport}>
+          <select name="airport">
             <option value="SAN">SAN</option>
             <option value="ORD">ORD</option>
             <option value="AUS">AUS</option>
@@ -67,7 +70,7 @@ export default class Show extends Component {
     );
   }
 }
-
+module.exports = Show;
 /*  
 // DATE SEPARATION (CHRISTINA)
 var d = new Date(),

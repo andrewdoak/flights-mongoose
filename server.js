@@ -86,14 +86,17 @@ app.get("/flights/new", (req, res) => {
 // Need Update routes for arrival and adding to array
 app.put("/flights/:id", async (req, res) => {
   try {
+    const destination = req.body;
+    const foundFlight = await Flight.findById(req.params.id);
+    foundFlight.destinations.push(destination);
     const updatedFlight = await Flight.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      foundFlight,
       { new: true }
     );
-    res.status(201).send(updatedFlight);
-  } catch (error) {
-    res.status(400).send(error);
+    res.status(201).redirect("/flights");
+  } catch (err) {
+    res.status(400).send(err);
   }
 });
 

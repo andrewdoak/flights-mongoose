@@ -39,10 +39,7 @@ const flightSchema = new Schema(
     flightNo: { type: Number, required: true, min: 10, max: 9999 },
     departs: { type: Date, default: Date.now() },
     // REFER TO INTRO TO MONGOOSE LESSON FOR THIS (TWEET.JS)
-    destinations: {
-      type: [Schema.Types.ObjectId],
-      ref: "Destination",
-    },
+    destinations: [destinationSchema],
   },
   { timestamps: true }
 );

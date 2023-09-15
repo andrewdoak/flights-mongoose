@@ -24,7 +24,7 @@ export default class Index extends Component {
                 </a>
                 {` `}
                 {/* EDIT LINK */}
-                <a href={`/flights/${flight._id}/edit`}>Edit</a>
+                {/* <a href={`/flights/${flight._id}/edit`}>Edit</a> */}
                 {/* AIRPORT */}
                 <br />
                 {`Departure Airport: ${flight.airport} `}
