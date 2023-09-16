@@ -43,7 +43,7 @@ class Show extends React.Component {
         </p>
 
         {/* ARRIVAL */}
-        {/* MAP OVER LI ELEMENTS NOT IN AN UL */}
+        {/* MAP OVER LI OR DIV ELEMENTS NOT IN AN UL, RETURN 1 ITEM ONLY */}
         {flight.destinations.map((flight, i) => {
           return (
             <li key={i} style={avenir}>
