@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Index extends Component {
   render() {
     const { flights } = this.props;
-    // Hide bullets, sans serif
+    // CSS
     const avenir = {
       fontFamily: "Avenir",
       listStyleType: "none",

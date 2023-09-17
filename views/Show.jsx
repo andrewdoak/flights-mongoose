@@ -10,7 +10,7 @@ class Show extends React.Component {
     date.setDate(futureDate);
     const defaultValue = date.toLocaleString("en-US");
 
-    // Hide bullets, sans serif
+    // CSS
     const avenir = {
       fontFamily: "Avenir",
       listStyleType: "none",
@@ -107,13 +107,13 @@ CAN ONLY MAP OVER AN ARRAY
 <p style={avenir}>{`Departure: ${flight.departs.toLocaleString()}`}</p>
 
 // DATE SEPARATION (CHRISTINA)
-var d = new Date(),
-    minutes = d.getMinutes().toString().length == 1 ? '0'+d.getMinutes() : d.getMinutes(),
-    hours = d.getHours().toString().length == 1 ? '0'+d.getHours() : d.getHours(),
-    ampm = d.getHours() >= 12 ? 'pm' : 'am',
+var date = new Date(),
+    minutes = date.getMinutes().toString().length == 1 ? '0'+date.getMinutes() : date.getMinutes(),
+    hours = date.getHours().toString().length == 1 ? '0'+date.getHours() : date.getHours(),
+    ampm = date.getHours() >= 12 ? 'pm' : 'am',
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-return days[d.getDay()]+' '+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear()+' '+hours+':'+minutes+ampm;
+return days[date.getDay()]+' '+months[date.getMonth()]+' '+date.getDate()+' '+date.getFullYear()+' '+hours+':'+minutes+ampm;
 
 // EDIT PAGE
 <a href={/flight/${`flight._id}/edit`}>Edit</a>
